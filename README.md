@@ -4,7 +4,7 @@ This project provides a Node.js wrapper for the Formstack API, allowing easy int
 
 ## Installation
 
-To use this wrapper, you need to have Node.js installed on your system. The wrapper is compatible with Node.js version 16.x.
+To use this wrapper, you need to have Node.js installed on your system. The wrapper is compatible with Node.js version 16.x and 21.5.
 
 ### Steps to Install:
 
