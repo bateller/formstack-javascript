@@ -23,7 +23,7 @@ To set up the wrapper, you need to initialize a new instance of the FormsClient 
 
 Basic Usage:
 ```javascript
-const { FormsClient } = require('formstack-javascript/src/restAdapter');
+const FormsClient = require('./src/restAdapter');
 
 const client = new FormsClient("<your-formstack-hostname>", "<your-api-token>");
 ```
@@ -67,6 +67,69 @@ client.updateForm("<form-id>", updatedData)
 client.deleteForm("<form-id>")
   .then(response => console.log(response))
   .catch(error => console.error(error));
+```
+
+## Full Example
+### index.js
+```javascript
+const FormsClient = require('./src/restAdapter');
+
+async function main() {
+    const client = new FormsClient("www.formstack.com", "<my-api-key>");
+
+    try {
+        // Example: Get a specific form
+        const formId = "3681241"; // My Form ID
+        const response = await client.getForm(formId);
+        console.log("Form Data:", response);
+
+        // Add more operations as needed
+    } catch (error) {
+        console.error("Error:", error.message);
+    }
+}
+
+main();
+```
+
+### Output
+```bash
+$ node index.js
+method=GET, url=https://www.formstack.com/api/v2/form/3681241/basic.json, params=null
+Success: 200
+Form Data: Result {
+  statusCode: 200,
+  message: 'Success',
+  data: {
+    created: '2019-12-04 09:21:40',
+    db: '1',
+    deleted: '0',
+    folder: '169221',
+    id: '3681241',
+    name: 'John Doe - Event Registration',
+    num_columns: '1',
+    progress_meter: '0',
+    submissions: '0',
+    submissions_unread: '0',
+    updated: '2020-02-14 14:36:15',
+    viewkey: '<some-view-key>',
+    views: '5',
+    language: 'en',
+    url: 'https://<some-subdomain>.formstack.com/forms/john_doe__event_registration',
+    encrypted: true,
+    thumbnail_url: null,
+    submit_button_title: 'Submit Registration',
+    inactive: false,
+    timezone: 'US/Eastern',
+    should_display_one_question_at_a_time: false,
+    can_access_1q_feature: true,
+    is_workflow_form: false,
+    is_workflow_published: false,
+    has_approvers: false,
+    edit_url: 'https://www.formstack.com/admin/form/builder/3681241/build'
+  }
+}
+$
 ```
 
 ## FAQ
