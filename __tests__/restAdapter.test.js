@@ -1,4 +1,4 @@
-const { FormsClient } = require('../restAdapter');
+const FormsClient = require('../src/restAdapter');
 
 describe('FormsClient', () => {
     let client;
