@@ -33,6 +33,7 @@ Replace <your-formstack-hostname> and <your-api-token> with your actual Formstac
 ## Examples
 Here are some basic examples of how to use the wrapper:
 
+#### Manage Forms
 1. **Get a Form**:
 ```javascript
 client.getForm("<form-id>")
@@ -65,6 +66,44 @@ client.updateForm("<form-id>", updatedData)
 4. **Delete a Form**:
 ```javascript
 client.deleteForm("<form-id>")
+  .then(response => console.log(response))
+  .catch(error => console.error(error));
+```
+
+#### Manage Folders
+5. **Get a Folder**:
+```javascript
+client.getFolder("<folder-id>")
+  .then(response => console.log(response))
+  .catch(error => console.error(error));
+```
+
+6. **Create a Folder**:
+```javascript
+const folderData = {
+  // folder data here
+};
+
+client.createFolder(folderData)
+  .then(response => console.log(response))
+  .catch(error => console.error(error));
+```
+
+#### Manage Fields
+7. **Get a Field**:
+```javascript
+client.getField("<field-id>")
+  .then(response => console.log(response))
+  .catch(error => console.error(error));
+```
+
+8. **Update a Field**:
+```javascript
+const updatedData = {
+  // Updated field data here
+};
+
+client.updateField("<field-id>", updatedData)
   .then(response => console.log(response))
   .catch(error => console.error(error));
 ```
