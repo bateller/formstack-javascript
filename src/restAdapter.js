@@ -81,6 +81,50 @@ class FormsClient {
         if (!submissionId) throw new FormstackException('Submission ID is required for deletion.');
         return this.request('DELETE', `submission/${submissionId}.json`);
     }
+
+    getFolder(id = '', params = null) {
+        const urlPath = id ? `/${id}` : '';
+        return this.request('GET', `folder${urlPath}.json`, params);
+    }
+
+    createFolder(data) {
+        return this.request('POST', 'folder.json', null, data);
+    }
+
+    updateFolder(id, data) {
+        if (!id) throw new FormstackException('Folder ID is required for update.');
+        return this.request('PUT', `folder/${id}.json`, null, data);
+    }
+
+    deleteFolder(id) {
+        if (!id) throw new FormstackException('Folder ID is required for deletion.');
+        return this.request('DELETE', `folder/${id}.json`);
+    }
+
+    getField(id) {
+        if (!id) throw new FormstackException('Field ID is required for retrieval.');
+        return this.request('GET', `field/${id}.json`);
+    }
+
+    updateField(id, data) {
+        if (!id) throw new FormstackException('Field ID is required for update.');
+        return this.request('PUT', `field/${id}.json`, null, data);
+    }
+
+    deleteField(id) {
+        if (!id) throw new FormstackException('Field ID is required for deletion.');
+        return this.request('DELETE', `field/${id}.json`);
+    }
+
+    getFormFields(formId) {
+        if (!formId) throw new FormstackException('Form ID is required for retrieving fields.');
+        return this.request('GET', `form/${formId}/field.json`);
+    }
+
+    createFormField(formId, data) {
+        if (!formId) throw new FormstackException('Form ID is required for creating a field.');
+        return this.request('POST', `form/${formId}/field.json`, null, data);
+    }
 }
 
 module.exports = FormsClient;
